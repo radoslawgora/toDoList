@@ -43,8 +43,10 @@ class ToDo extends React.Component {
             <div className="wrapper">
                 <div className="header">
                     <h1>To-do-app</h1>
-                    <input type="text" value={this.state.inputValue} onChange={this.inputHandler.bind(this)} />
-                    <button onClick={this.addItem.bind(this )}>Add</button>
+                    <div className="add_wrapper">
+                        <input type="text" value={this.state.inputValue} onChange={this.inputHandler.bind(this)} />
+                        <button onClick={this.addItem.bind(this )}>Add</button>
+                    </div>
                 </div>
                 {elements}
             </div>
@@ -54,3 +56,5 @@ class ToDo extends React.Component {
 }
 
 export default ToDo;
+
+//W inpucie ustaw limit do
