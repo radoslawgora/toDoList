@@ -1,5 +1,6 @@
 import React from "react";
-import ToDoItem from "./ToDoItem";
+import ToDoItem from "./ToDoItem/ToDoItem";
+import Header from "./Header/Header";
 
 class ToDo extends React.Component {
     state = {
@@ -19,6 +20,8 @@ class ToDo extends React.Component {
     }
 
     addItem() {
+        
+        if(this.state.inputValue.length > 0) {
         const item = {
             id: Math.random(),
             title: this.state.inputValue
@@ -27,6 +30,7 @@ class ToDo extends React.Component {
         const newElements = [item, ...this.state.elements];
         this.setState({ elements: newElements });
         this.setState({ inputValue: ''})
+        }
     }
 
     inputHandler(event) {
@@ -42,13 +46,15 @@ class ToDo extends React.Component {
         return (
             <div className="wrapper">
                 <div className="header">
-                    <h1>To-do-app</h1>
+                    <Header />
                     <div className="add_wrapper">
-                        <input type="text" value={this.state.inputValue} onChange={this.inputHandler.bind(this)} />
+                        <input type="text" value={this.state.inputValue} maxLength={33} onChange={this.inputHandler.bind(this)} />
                         <button onClick={this.addItem.bind(this )}>Add</button>
                     </div>
                 </div>
-                {elements}
+                <div className="elementsList">
+                    {elements}
+                </div>
             </div>
  
         );
